@@ -54,12 +54,14 @@ def check_inventory_and_notify():
   inventory_status = check_inventory_status()
 
   if inventory_status == "有現貨":
+    print("有貨")
     payload = {"chat_id": chat_id, "text": "🚨有現貨!!!快去買🚨"}
     response = requests.post(url=url, json=payload)
 
     return "通知送出!有貨", 200
 
   else:
+    print("沒貨")
     payload = {"chat_id": chat_id, "text": "缺貨中...再等等"}
     response = requests.post(url=url, json=payload)
 
