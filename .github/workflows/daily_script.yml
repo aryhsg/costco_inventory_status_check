@@ -1,0 +1,35 @@
+name: Hourly Crawler Script
+
+on:
+  schedule:
+    # 設置為每小時執行一次
+    - cron: '0 * * * *' 
+  
+  # 允許手動觸發 (可選)
+  workflow_dispatch:
+
+jobs:
+  run_crawler:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 步驟 1: 檢出儲存庫中的程式碼
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 步驟 2: 設定 Python 環境
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 步驟 3: 安裝依賴 (如果您的爬蟲程式有用到 requests, beautifulsoup 等)
+      # 假設您的依賴寫在 requirements.txt 檔案中
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt 
+
+      # 步驟 4: 執行您的爬蟲程式
+      - name: Run the crawler
+        run: python main.py # **替換成您實際的爬蟲腳本名稱**
