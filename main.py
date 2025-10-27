@@ -49,6 +49,8 @@ def check_inventory_status():
 def check_inventory_and_notify():
   TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
   chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+  print(f"TOKEN read success: {bool(TOKEN)}")
+  print(f"CHAT_ID read success: {bool(chat_id)}")
   url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 
   inventory_status = check_inventory_status()
