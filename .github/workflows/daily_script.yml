@@ -11,6 +11,10 @@ on:
 jobs:
   run_crawler:
     runs-on: ubuntu-latest
+
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
     
     steps:
       # 步驟 1: 檢出儲存庫中的程式碼
