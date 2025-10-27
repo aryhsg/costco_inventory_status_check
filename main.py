@@ -67,5 +67,5 @@ def check_inventory_and_notify():
 
 
 if __name__ == "__main__":
-  check_inventory_and_notify():
+  check_inventory_and_notify()
   print("Crawler finished successfully.")
