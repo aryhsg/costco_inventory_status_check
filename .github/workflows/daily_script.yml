@@ -3,7 +3,7 @@ name: Hourly Crawler Script
 on:
   schedule:
     # 設置為每小時執行一次
-    - cron: '*/5 * * * *' 
+    - cron: '52 8 * * *' 
   
   # 允許手動觸發 (可選)
   workflow_dispatch:
