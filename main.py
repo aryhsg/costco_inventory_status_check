@@ -66,7 +66,7 @@ def check_inventory_and_notify():
 
   else:
     print("沒貨")
-    payload = {"chat_id": chat_id, "text": f"缺貨中...再等等 \n{buy_url}"}
+    payload = {"chat_id": chat_id, "text": f"🈚缺貨中...再等等🈚"}
     response = requests.post(url=url, json=payload)
     print(f"Telegram API Status: {response.status_code}")
     print(f"Telegram API Response: {response.text}")
