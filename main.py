@@ -29,11 +29,10 @@ def check_inventory_status():
       product_data = response.json()
       #print("--- 成功解析產品 JSON 數據 ---")
 
-      options = product_data.get("baseOptions", [{}])[0].get("selected", [])
+      stockStatus = product_data.get("stock", [{}]).get("stockLevelStatus", [])
+      print(stockStatus)
 
-      print(options["stock"]["stockLevelStatus"])
-
-      if options["stock"]["stockLevelStatus"] == "inStock":
+      if stockStatus == "inStock":
         stock_message = "有現貨"
         return stock_message
 
