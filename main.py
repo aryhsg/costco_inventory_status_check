@@ -47,7 +47,7 @@ def check_inventory_status():
 
 
 def check_inventory_and_notify():
-  target_url = "https://www.costco.com.tw/rest/v2/taiwan/products/158005/?fields=FULL&lang=zh_TW&curr=TWD"
+  buy_url = "https://www.costco.com.tw/Digital-Mobile/Mobile-Tablets/iPhone-Mobile-Phones/Apple-iPhone-17-256GB-Black/p/158005"
   TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
   chat_id = os.environ.get("TELEGRAM_CHAT_ID")
   print(f"TOKEN read success: {bool(TOKEN)}")
@@ -58,7 +58,7 @@ def check_inventory_and_notify():
 
   if inventory_status == "有現貨":
     print("有貨")
-    payload = {"chat_id": chat_id, "text": f"🚨有現貨!!!快去買🚨 {target_url}"}
+    payload = {"chat_id": chat_id, "text": f"🚨有現貨!!!快去買🚨 {buy_url}"}
     response = requests.post(url=url, json=payload)
     print(f"Telegram API Status: {response.status_code}")
     print(f"Telegram API Response: {response.text}")
@@ -67,7 +67,7 @@ def check_inventory_and_notify():
 
   else:
     print("沒貨")
-    payload = {"chat_id": chat_id, "text": f"缺貨中...再等等 {target_url}"}
+    payload = {"chat_id": chat_id, "text": f"缺貨中...再等等 {buy_url}"}
     response = requests.post(url=url, json=payload)
     print(f"Telegram API Status: {response.status_code}")
     print(f"Telegram API Response: {response.text}")
